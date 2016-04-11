@@ -43,6 +43,7 @@ Add below code line end of the file, save and close.
 JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 ```
 
+Reload system environment
 ```csharp
 source /etc/environment
 ```
