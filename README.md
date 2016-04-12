@@ -107,4 +107,21 @@ You have to enable SSH access to your local machine with this newly created key.
 cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 ```
 
+#####Fetch and Install Hadoop
 You can find hadoop mirror site for your download http://www.apache.org/dyn/closer.cgi/hadoop/common/
+
+```
+cd /usr/local
+sudo wget "http://mirror.idealhosting.net.tr/Apache/hadoop/common/stable/hadoop-2.7.2.tar.gz"
+sudo tar -xzvf hadoop-2.7.2.tar.gz
+sudo mv hadoop-2.7.2 /usr/local/hadoop
+sudo chown hduser:hadoop -R /usr/local/hadoop
+```
+
+Creating namenode and datanode folders
+```
+sudo mkdir -p /usr/local/hadoop_store/hdfs/namenode
+sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
+sudo chown hduser:hadoop -R /usr/local/hadoop_store/
+```
+
