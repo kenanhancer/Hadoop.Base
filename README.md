@@ -230,6 +230,14 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
    <name>dfs.datanode.data.dir</name>
    <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
  </property>
+<property>
+    <name>dfs.http.address</name>
+    <value>localhost:50070</value>
+</property>
+<property>
+    <name>dfs.datanode.http.address</name>
+    <value>localhost:50075</value>
+</property>
 ```
 
 #Starting single-node cluster
@@ -266,4 +274,12 @@ stop-yarn.sh
 http://localhost:8088 
 
 http://ipaddress:8088
+```
+
+#NameNode
+
+```
+http://localhost:50070
+
+http://ipaddress:50070
 ```
