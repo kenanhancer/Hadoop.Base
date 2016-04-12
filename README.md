@@ -141,7 +141,7 @@ To complete the setup of Hadoop, the following files will have to be modified:
 - /usr/local/hadoop/etc/hadoop/mapred-site.xml.template
 - /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
-#####Update $HOME/.bashrc
+#####Updating $HOME/.bashrc
 ```
 sudo gedit $HOME/.bashrc
 ```
@@ -165,4 +165,69 @@ export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
 After saving and closing the .bashrc file, execute the following command so that your system recognizes the newly created environment variables:
 ```
 source $HOME/.bashrc
+```
+
+#####Updating /usr/local/hadoop/etc/hadoop/core-site.xml
+```
+sudo gedit /usr/local/hadoop/etc/hadoop/core-site.xml
+```
+
+This will open the core-site.xml file in a text editor. Enter the following content in between the <configuration></configuration> tag.
+```
+<property>
+   <name>fs.default.name</name>
+   <value>hdfs://localhost:9000</value>
+</property>
+```
+
+#####Updating /usr/local/hadoop/etc/hadoop/yarn-site.xml
+```
+sudo gedit /usr/local/hadoop/etc/hadoop/yarn-site.xml
+```
+
+This will open the yarn-site.xml file in a text editor. Enter the following content in between the <configuration></configuration> tag.
+```
+<property>
+   <name>yarn.nodemanager.aux-services</name>
+   <value>mapreduce_shuffle</value>
+</property>
+<property>
+   <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
+   <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+</property>
+```
+
+#####Creating and Updating /usr/local/hadoop/etc/hadoop/mapred-site.xml
+```
+sudo cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
+sudo gedit /usr/local/hadoop/etc/hadoop/mapred-site.xml
+```
+
+This will open the mapred-site.xml file in a text editor. Enter the following content in between the <configuration></configuration> tag.
+```
+<property>
+   <name>mapreduce.framework.name</name>
+   <value>yarn</value>
+</property>
+```
+
+#####Updating /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+```
+sudo gedit /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+```
+
+This will open the hdfs-site.xml file in a text editor. Enter the following content in between the <configuration></configuration> tag.
+```
+<property>
+   <name>dfs.replication</name>
+   <value>1</value>
+ </property>
+ <property>
+   <name>dfs.namenode.name.dir</name>
+   <value>file:/usr/local/hadoop_store/hdfs/namenode</value>
+ </property>
+ <property>
+   <name>dfs.datanode.data.dir</name>
+   <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
+ </property>
 ```
