@@ -310,6 +310,57 @@ stop-dfs.sh
 stop-yarn.sh
 ```
 
+#Check HDFS status
+```
+hdfs dfsadmin -report
+```
+
+It should show a report like:
+```
+Configured Capacity: 18889830400 (17.59 GB)
+Present Capacity: 12390932480 (11.54 GB)
+DFS Remaining: 12390899712 (11.54 GB)
+DFS Used: 32768 (32 KB)
+DFS Used%: 0.00%
+Under replicated blocks: 0
+Blocks with corrupt replicas: 0
+Missing blocks: 0
+Missing blocks (with replication factor 1): 0
+
+-------------------------------------------------
+Live datanodes (1):
+
+Name: 127.0.0.1:50010 (localhost)
+Hostname: ubuntu
+Decommission Status : Normal
+Configured Capacity: 18889830400 (17.59 GB)
+DFS Used: 32768 (32 KB)
+Non DFS Used: 6498897920 (6.05 GB)
+DFS Remaining: 12390899712 (11.54 GB)
+DFS Used%: 0.00%
+DFS Remaining%: 65.60%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 1
+Last contact: Tue Apr 12 05:54:12 PDT 2016
+```
+
+#Check YARN status
+```
+yarn node -list
+```
+
+
+It should show a report like:
+```
+Total Nodes:1
+         Node-Id	     Node-State	Node-Http-Address	Number-of-Running-Containers
+    ubuntu:38478	        RUNNING	      ubuntu:8042	                           0
+```
+
 
 #ResourceManager
 
