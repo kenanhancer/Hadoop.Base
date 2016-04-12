@@ -240,7 +240,28 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
 </property>
 ```
 
-#Starting single-node cluster
+#Start HDFS and YARN manually
+Start NameNode
+```
+hadoop-daemon.sh --script hdfs start namenode
+```
+
+Start DataNode
+```
+hadoop-daemon.sh --script hdfs start datanode
+```
+
+Start Yarn ResourceManager
+```
+yarn-daemon.sh start resourcemanager
+```
+
+Start Yarn NodeManager
+```
+yarn-daemon.sh start nodemanager
+```
+
+#Start HDFS and YARN with script
 ```
 start-dfs.sh
 start-yarn.sh
@@ -262,11 +283,33 @@ hduser@ubuntu:/usr/local$ jps
 6047 DataNode
 ```
 
-#Stopping single-node cluster
+#Stopping HDFS and YARN manually
+Stop NameNode
+```
+hadoop-daemon.sh --script hdfs stop namenode
+```
+
+Stop DataNode
+```
+hadoop-daemon.sh --script hdfs stop datanode
+```
+
+Stop Yarn ResourceManager
+```
+yarn-daemon.sh stop resourcemanager
+```
+
+Stop Yarn NodeManager
+```
+yarn-daemon.sh stop nodemanager
+```
+
+#Stopping HDFS and YARN with script
 ```
 stop-dfs.sh
 stop-yarn.sh
 ```
+
 
 #ResourceManager
 
