@@ -232,16 +232,13 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
  </property>
 ```
 
-#Start Hadoop
-
+#Starting single-node cluster
 ```
 start-dfs.sh
-```
-
-```
 start-yarn.sh
 ```
 
+#####Checking whether the Hadoop processes are running
 ```
 jps
 ```
@@ -255,4 +252,18 @@ hduser@ubuntu:/usr/local$ jps
 6426 ResourceManager
 6251 SecondaryNameNode
 6047 DataNode
+```
+
+#Stopping single-node cluster
+```
+stop-dfs.sh
+stop-yarn.sh
+```
+
+#ResourceManager
+
+```
+http://localhost:8088 
+
+http://ipaddress:8088
 ```
