@@ -231,3 +231,28 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
    <value>file:/usr/local/hadoop_store/hdfs/datanode</value>
  </property>
 ```
+
+#Start Hadoop
+
+```
+start-dfs.sh
+```
+
+```
+start-yarn.sh
+```
+
+```
+jps
+```
+
+Output will be like below:
+```
+hduser@ubuntu:/usr/local$ jps
+6978 Jps
+6680 NodeManager
+5881 NameNode
+6426 ResourceManager
+6251 SecondaryNameNode
+6047 DataNode
+```
