@@ -1,6 +1,11 @@
 # Hadoop.Base
 Installation of Hadoop on Ubuntu (Single-Node Cluster)
 
+##Install Gedit
+```
+sudo apt-get remove gedit
+sudo apt-get install gedit
+```
 
 ##Install Java
 ```
