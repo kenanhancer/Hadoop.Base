@@ -54,6 +54,7 @@ source /etc/environment
 ```
 sudo addgroup hadoop
 sudo adduser --ingroup hadoop hduser
+sudo adduser hduser sudo
 su hduser
 ```
 
@@ -125,3 +126,38 @@ sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
 sudo chown hduser:hadoop -R /usr/local/hadoop_store/
 ```
 
+#####Edit and Setup Configuration Files
+To complete the setup of Hadoop, the following files will have to be modified:
+
+- ~/.bashrc
+- /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+- /usr/local/hadoop/etc/hadoop/core-site.xml
+- /usr/local/hadoop/etc/hadoop/yarn-site.xml
+- /usr/local/hadoop/etc/hadoop/mapred-site.xml.template
+- /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+
+#####Update $HOME/.bashrc
+```
+sudo gedit $HOME/.bashrc
+```
+
+This will open the .bashrc file in a text editor. Go to the end of the file and paste/type the following content in it:
+```
+# -- HADOOP -- #
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
+# -- HADOOP -- #
+```
+
+After saving and closing the .bashrc file, execute the following command so that your system recognizes the newly created environment variables:
+```
+source $HOME/.bashrc
+```
