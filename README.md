@@ -135,7 +135,7 @@ sudo chown hduser:hadoop -R /usr/local/hadoop_store/
 To complete the setup of Hadoop, the following files will have to be modified:
 
 - ~/.bashrc
-- /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+- ~~/usr/local/hadoop/etc/hadoop/hadoop-env.sh~~(doesn't need to update it. Because, JAVA_HOME is updated in /etc/environment)
 - /usr/local/hadoop/etc/hadoop/core-site.xml
 - /usr/local/hadoop/etc/hadoop/yarn-site.xml
 - /usr/local/hadoop/etc/hadoop/mapred-site.xml.template
