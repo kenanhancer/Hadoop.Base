@@ -240,6 +240,12 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
 </property>
 ```
 
+#Formatting the HDFS filesystem via the NameNode
+The first step to starting up your Hadoop installation is formatting the Hadoop filesystem.
+```
+hadoop namenode -format
+```
+
 #Start HDFS and YARN manually
 Start NameNode
 ```
