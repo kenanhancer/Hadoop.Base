@@ -372,14 +372,12 @@ Total Nodes:1
 
 ```
 http://localhost:8088 
-
-http://ipaddress:8088
 ```
 
 #NameNode
 
 ```
 http://localhost:50070
-
-http://ipaddress:50070
 ```
+
+
