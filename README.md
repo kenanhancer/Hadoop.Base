@@ -418,7 +418,7 @@ hadoop fs -put <local-src> ... <HDFS_dest_path>
 Copy single src, or multiple srcs from local file system to the destination file system. Also reads input from stdin and writes to destination file system.
 
 Example:
-hadoop fs -put popularNames.txt /user/hadoop/dir1/names.txt
+hadoop fs -put names.txt /user/hadoop/dir1/names.txt
 hadoop fs -put /home/testtest/Samplefile.txt  /user/testtest/dir3/
 hadoop fs -put localfile /user/hadoop/hadoopfile
 hadoop fs -put localfile1 localfile2 /user/hadoop/hadoopdir
@@ -428,5 +428,65 @@ hadoop fs -put - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from st
 
 #Download a file from HDFS to local file system
 ```
+Usage:
+hadoop fs -get [-ignorecrc] [-crc] <src> <localdst>
 
+Example:
+hadoop fs -get /user/hadoop/dir1/names.txt/home/
+```
+
+#Copy a file from Local file system to HDFS
+```
+Usage:
+hadoop fs -copyFromLocal <localsrc> URI
+
+Similar to put command, except that the source is restricted to a local file reference.
+
+Example:
+hadoop fs -copyFromLocal /home/hadoop/abc.txt  /user/hadoop/abc.txt
+```
+
+#Copy a file from HDFS to local file system
+```
+Usage:
+hadoop fs -copyToLocal [-ignorecrc] [-crc] URI <localdst>
+
+Similar to get command, except that the destination is restricted to a local file reference.
+
+Example:
+hadoop fs -copyToLocal /user/hadoop/purchases.txt /home/training/data
+```
+
+#Copy a file from source to destination
+```
+Usage:
+hadoop fs -cp [-f] [-p | -p[topax]] URI [URI ...] <dest>
+
+Copy files from source to destination. This command allows multiple sources as well in which case the destination must be a directory.
+
+Options:
+	The -f option will overwrite the destination if it already exists.
+	The -p option will preserve file attributes [topx] (timestamps, ownership, permission, ACL, XAttr). If -p is specified with no arg, then preserves timestamps, ownership, permission. If -pa is specified, then preserves permission also because ACL is a super-set of permission. Determination of whether raw namespace extended attributes are preserved is independent of the -p flag.
+	
+Example:
+hadoop fs -cp /user/hadoop/dir1/abc.txt /user/hadoop/dir2
+hadoop fs -cp /user/hadoop/file1 /user/hadoop/file2
+```
+
+#Move file from source to destination
+```
+
+```
+
+#See contents of a file
+```
+Usage:
+hadoop fs -cat URI [URI ...]
+
+Copies source paths to stdout.
+
+Example:
+hadoop fs -cat /user/hadoop/dir1/abc.txt
+hadoop fs -cat hdfs://nn1.example.com/file1 hdfs://nn2.example.com/file2
+hadoop fs -cat file:///file3 /user/hadoop/file4
 ```
