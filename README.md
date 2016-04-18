@@ -546,3 +546,15 @@ hadoop fs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
 ```
 hadoop fs -getmerge /user/hduser/helloWorldOutput_WorldCount/ /user/hduser/helloWorldOutput_WorldCount2 ~/tmp/output/test.txt
 ```
+
+Output:
+```
+hduser@ubuntu:~$ cat tmp/output/test.txt
+hello	3
+world	2
+hadoop,	1
+hello	5
+mapreduce!	1
+world	2
+hduser@ubuntu:~$ 
+```
