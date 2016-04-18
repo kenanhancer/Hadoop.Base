@@ -542,8 +542,7 @@ hadoop fs -du /user/hadoop/dir1 /user/hadoop/file1 hdfs://nn.example.com/user/ha
 hadoop fs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
 ```
 
-#Copy results from HDFS to local file
+#Merge results from HDFS and copy local file
 ```
-hadoop fs -getmerge /user/hduser/helloWorldOutput_WorldCount/ ~/tmp/output/test.txt
 hadoop fs -getmerge /user/hduser/helloWorldOutput_WorldCount/ /user/hduser/helloWorldOutput_WorldCount2 ~/tmp/output/test.txt
 ```
