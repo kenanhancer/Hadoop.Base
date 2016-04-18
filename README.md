@@ -369,15 +369,64 @@ Total Nodes:1
 
 
 #ResourceManager
-
 ```
 http://localhost:8088 
 ```
 
 #NameNode
-
 ```
 http://localhost:50070
 ```
 
+#Hadoop File System Commands
+You can reach file system commands from http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/FileSystemShell.html
 
+#Create a directory in HDFS
+```
+Usage:
+hadoop fs -mkdir [-p] <paths>
+
+Options:
+The -p option behavior is much like Unix mkdir -p, creating parent directories along the path.
+
+Example:
+hadoop fs -mkdir /user/hadoop
+hadoop fs -mkdir /user/hadoop/dir1 /user/hadoop/dir2 /user/hadoop/dir3
+```
+
+#List the contents of a directory
+```
+Usage:
+Usage: hadoop fs -ls [-d] [-h] [-R] <args>
+
+Options:
+-d: Directories are listed as plain files.
+-h: Format file sizes in a human-readable fashion (eg 64.0m instead of 67108864).
+-R: Recursively list subdirectories encountered.
+
+Example:
+hadoop fs -ls /user/hadoop
+hadoop fs -ls /user/hadoop/dir1
+hadoop fs -ls /user/hadoop/dir1/names.txt
+```
+
+#Upload a file from local file system to HDFS
+```
+Usage:
+hadoop fs -put <local-src> ... <HDFS_dest_path>
+
+Copy single src, or multiple srcs from local file system to the destination file system. Also reads input from stdin and writes to destination file system.
+
+Example:
+hadoop fs -put popularNames.txt /user/hadoop/dir1/names.txt
+hadoop fs -put /home/testtest/Samplefile.txt  /user/testtest/dir3/
+hadoop fs -put localfile /user/hadoop/hadoopfile
+hadoop fs -put localfile1 localfile2 /user/hadoop/hadoopdir
+hadoop fs -put localfile hdfs://nn.example.com/hadoop/hadoopfile
+hadoop fs -put - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.
+```
+
+#Download a file from HDFS to local file system
+```
+
+```
