@@ -475,7 +475,15 @@ hadoop fs -cp /user/hadoop/file1 /user/hadoop/file2
 
 #Move file from source to destination
 ```
+Usage:
+hadoop fs -mv URI [URI ...] <dest>
 
+Moves files from source to destination. This command allows multiple sources as well in which case the destination needs to be a directory. Moving files across file systems is not permitted.
+
+Example:
+hadoop fs -mv /user/hadoop/file1 /user/hadoop/file2
+hadoop fs -mv hdfs://nn.example.com/file1 hdfs://nn.example.com/file2 hdfs://nn.example.com/file3 hdfs://nn.example.com/dir1
+hadoop fs -mv /user/hduser/dir1/abc.txt /user/hadoop/dir2
 ```
 
 #See contents of a file
@@ -489,4 +497,47 @@ Example:
 hadoop fs -cat /user/hadoop/dir1/abc.txt
 hadoop fs -cat hdfs://nn1.example.com/file1 hdfs://nn2.example.com/file2
 hadoop fs -cat file:///file3 /user/hadoop/file4
+```
+
+#Remove a file or directory in HDFS
+```
+Usage:
+Usage: hadoop fs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]
+
+Remove files specified as argument. Deletes directory only when it is empty
+
+Options:
+	The -f option will not display a diagnostic message or modify the exit status to reflect an error if the file does not exist.
+	The -R option deletes the directory and any content under it recursively.
+	The -r option is equivalent to -R.
+	The -skipTrash option will bypass trash, if enabled, and delete the specified file(s) immediately. This can be useful when it is necessary to delete files from an over-quota directory.
+	
+Example:
+hadoop fs -rm hdfs://nn.example.com/file /user/hadoop/emptydir
+hadoop fs -rm /user/hduser/dir1/abc.txt
+```
+
+#####Recursive version of delete
+```
+hadoop fs -rmr /user/hadoop/
+```
+
+#Display the aggregate length of a file
+```
+Usage:
+hadoop fs -du [-s] [-h] URI [URI ...]
+
+Displays sizes of files and directories contained in the given directory or the length of a file in case its just a file.
+
+Options:
+	The -s option will result in an aggregate summary of file lengths being displayed, rather than the individual files.
+	The -h option will format file sizes in a “human-readable” fashion (e.g 64.0m instead of 67108864)
+	
+Example:
+hadoop fs -du /user/hadoop/dir1 /user/hadoop/file1 hdfs://nn.example.com/user/hadoop/dir1
+```
+
+#Copy a directory from one node in the cluster to another
+```
+hadoop fs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
 ```
