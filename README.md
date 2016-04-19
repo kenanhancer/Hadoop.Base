@@ -566,13 +566,13 @@ echo kenan enes enejda hasan hüseyin ahmet mehmet kadir cemil vedat ergün gül
 echo bilal serdar selçuk kenan enes hasan deniz halil sinan özlem cemalettin kemal nasibe pakize hasibe faruk ahmet mehmet oğuz vahap > names2.txt
 cat names1.txt names2.txt >> fullnames.txt
 
-hadoop fs -put fullnames.txt
+hadoop fs -put fullnames.txt fullnames
 
-hadoop fs -cat fullnames.txt
+hadoop fs -cat fullnames
 
-hadoop jar /home/kenan/Desktop/wordcountf/wordcount.jar fullnames.txt output/fullnamesOutput
+hadoop jar /home/kenan/Desktop/wordcountf/wordcount.jar fullnames fullnames-output
 
-hadoop fs -cat output/fullnamesOutput/part-r-00000
+hadoop fs -cat fullnames-output/part-r-00000
 ```
 
 Output:
