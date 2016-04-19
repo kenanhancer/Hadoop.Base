@@ -607,3 +607,13 @@ vahap	1
 vedat	1
 özlem	1
 ```
+
+#Copying multiple file paths into HDFS
+```
+hadoop fs -mkdir fullnames-multiplefiles
+hadoop fs -put names1.txt names2.txt fullnames-multiplefiles
+hadoop fs -ls fullnames-multiplefiles
+
+hadoop jar /home/kenan/Desktop/wordcountf/wordcount.jar fullnames-multiplefiles fullnames-multiplefiles-output
+hadoop fs -cat fullnames-multiplefiles-output/part-r-00000
+```
