@@ -650,3 +650,14 @@ vahap	1
 vedat	1
 özlem	1
 ```
+
+#Copy files from web to HDFS
+```
+mkdir gutenberg
+wget http://www.gutenberg.org/files/4300/4300.txt
+wget http://www.gutenberg.org/files/20417/20417.txt
+
+hadoop fs -put gutenberg
+hadoop jar /home/kenan/Desktop/wordcountf/wordcount.jar gutenberg gutenberg-output
+hadoop fs -cat gutenberg-output/part-r-00000
+```
