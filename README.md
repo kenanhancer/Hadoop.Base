@@ -560,6 +560,7 @@ hduser@ubuntu:~$
 ```
 
 #Simple Example
+You can copy job result from HDFS to the local file system. Alternatively, you can use cat command to read the file directly from HDFS without copying it to the local file system.
 ```
 echo kenan enes enejda hasan hüseyin ahmet mehmet kadir cemil vedat ergün güler bekir halit > names1.txt
 echo bilal serdar selçuk kenan enes hasan deniz halil sinan özlem cemalettin kemal nasibe pakize hasibe faruk ahmet mehmet oğuz vahap > names2.txt
