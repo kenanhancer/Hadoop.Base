@@ -558,3 +558,51 @@ mapreduce!	1
 world	2
 hduser@ubuntu:~$ 
 ```
+
+#Simple Example
+```
+echo kenan enes enejda hasan hüseyin ahmet mehmet kadir cemil vedat ergün güler bekir halit > names1.txt
+echo bilal serdar selçuk kenan enes hasan deniz halil sinan özlem cemalettin kemal nasibe pakize hasibe faruk ahmet mehmet oğuz vahap > names2.txt
+cat names1.txt names2.txt >> fullnames.txt
+
+hadoop fs -put fullnames.txt
+
+hadoop fs -cat fullnames.txt
+
+hadoop jar /home/kenan/Desktop/wordcountf/wordcount.jar fullnames.txt output/fullnamesOutput
+
+hadoop fs -cat output/fullnamesOutput/part-r-00000
+```
+
+Output:
+```
+ahmet	2
+bekir	1
+bilal	1
+cemalettin	1
+cemil	1
+deniz	1
+enejda	1
+enes	2
+ergün	1
+faruk	1
+güler	1
+halil	1
+halit	1
+hasan	2
+hasibe	1
+hüseyin	1
+kadir	1
+kemal	1
+kenan	2
+mehmet	2
+nasibe	1
+oğuz	1
+pakize	1
+selçuk	1
+serdar	1
+sinan	1
+vahap	1
+vedat	1
+özlem	1
+```
