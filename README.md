@@ -7,7 +7,7 @@ sudo apt-get remove gedit
 sudo apt-get install gedit
 ```
 
-##I nstall Java
+## Install Java
 ```
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
