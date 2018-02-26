@@ -1,20 +1,20 @@
 # Hadoop.Base
 Installation of Hadoop on Ubuntu (Single-Node Cluster)
 
-##Install Gedit
+## Install Gedit
 ```
 sudo apt-get remove gedit
 sudo apt-get install gedit
 ```
 
-##Install Java
+##I nstall Java
 ```
 sudo add-apt-repository ppa:webupd8team/java
 sudo apt-get update
 sudo apt-get install oracle-java8-installer
 ```
 
-#####Check Java
+##### Check Java
 ```
 java -version
 ```
@@ -26,7 +26,7 @@ Java(TM) SE Runtime Environment (build 1.8.0_77-b03)
 Java HotSpot(TM) 64-Bit Server VM (build 25.77-b03, mixed mode)
 ```
 
-#####Set JAVA_HOME environment variable
+##### Set JAVA_HOME environment variable
 List installed java paths
 ```
 update-java-alternatives --list
@@ -53,9 +53,9 @@ Reload system environment
 source /etc/environment
 ```
 
-##Install Hadoop
+## Install Hadoop
 
-#####Adding a dedicated Hadoop system user
+##### Adding a dedicated Hadoop system user
 ```
 sudo addgroup hadoop
 sudo adduser --ingroup hadoop hduser
@@ -87,7 +87,7 @@ Is the information correct? [Y/n] y
 kenan@ubuntu:~$ 
 ```
 
-#####Configuring SSH
+##### Configuring SSH
 We have to generate an SSH key for the hduser user.
 ```
 sudo apt-get install openssh-server
@@ -113,7 +113,7 @@ You have to enable SSH access to your local machine with this newly created key.
 cat $HOME/.ssh/id_rsa.pub >> $HOME/.ssh/authorized_keys
 ```
 
-#####Fetch and Install Hadoop
+##### Fetch and Install Hadoop
 You can find hadoop mirror site for your download http://www.apache.org/dyn/closer.cgi/hadoop/common/
 
 ```
@@ -131,7 +131,7 @@ sudo mkdir -p /usr/local/hadoop_store/hdfs/datanode
 sudo chown hduser:hadoop -R /usr/local/hadoop_store/
 ```
 
-#####Edit and Setup Configuration Files
+##### Edit and Setup Configuration Files
 To complete the setup of Hadoop, the following files will have to be modified:
 
 - ~/.bashrc
@@ -141,7 +141,7 @@ To complete the setup of Hadoop, the following files will have to be modified:
 - /usr/local/hadoop/etc/hadoop/mapred-site.xml.template
 - /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
-#####Updating $HOME/.bashrc
+##### Updating $HOME/.bashrc
 ```
 sudo gedit $HOME/.bashrc
 ```
@@ -167,7 +167,7 @@ After saving and closing the .bashrc file, execute the following command so that
 source $HOME/.bashrc
 ```
 
-#####Updating /usr/local/hadoop/etc/hadoop/core-site.xml
+##### Updating /usr/local/hadoop/etc/hadoop/core-site.xml
 ```
 sudo gedit /usr/local/hadoop/etc/hadoop/core-site.xml
 ```
@@ -180,7 +180,7 @@ This will open the core-site.xml file in a text editor. Enter the following cont
 </property>
 ```
 
-#####Updating /usr/local/hadoop/etc/hadoop/yarn-site.xml
+##### Updating /usr/local/hadoop/etc/hadoop/yarn-site.xml
 ```
 sudo gedit /usr/local/hadoop/etc/hadoop/yarn-site.xml
 ```
@@ -197,7 +197,7 @@ This will open the yarn-site.xml file in a text editor. Enter the following cont
 </property>
 ```
 
-#####Creating and Updating /usr/local/hadoop/etc/hadoop/mapred-site.xml
+##### Creating and Updating /usr/local/hadoop/etc/hadoop/mapred-site.xml
 ```
 sudo cp /usr/local/hadoop/etc/hadoop/mapred-site.xml.template /usr/local/hadoop/etc/hadoop/mapred-site.xml
 sudo gedit /usr/local/hadoop/etc/hadoop/mapred-site.xml
@@ -211,7 +211,7 @@ This will open the mapred-site.xml file in a text editor. Enter the following co
 </property>
 ```
 
-#####Updating /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+##### Updating /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```
 sudo gedit /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```
@@ -240,13 +240,13 @@ This will open the hdfs-site.xml file in a text editor. Enter the following cont
 </property>
 ```
 
-#Formatting the HDFS filesystem via the NameNode
+# Formatting the HDFS filesystem via the NameNode
 The first step to starting up your Hadoop installation is formatting the Hadoop filesystem.
 ```
 hadoop namenode -format
 ```
 
-#Start HDFS and YARN manually
+# Start HDFS and YARN manually
 Start NameNode
 ```
 hadoop-daemon.sh --script hdfs start namenode
@@ -267,13 +267,13 @@ Start Yarn NodeManager
 yarn-daemon.sh start nodemanager
 ```
 
-#Start HDFS and YARN with script
+# Start HDFS and YARN with script
 ```
 start-dfs.sh
 start-yarn.sh
 ```
 
-#####Checking whether the Hadoop processes are running
+##### Checking whether the Hadoop processes are running
 ```
 jps
 ```
@@ -289,7 +289,7 @@ hduser@ubuntu:/usr/local$ jps
 6047 DataNode
 ```
 
-#Stopping HDFS and YARN manually
+# Stopping HDFS and YARN manually
 Stop NameNode
 ```
 hadoop-daemon.sh --script hdfs stop namenode
@@ -310,13 +310,13 @@ Stop Yarn NodeManager
 yarn-daemon.sh stop nodemanager
 ```
 
-#Stopping HDFS and YARN with script
+# Stopping HDFS and YARN with script
 ```
 stop-dfs.sh
 stop-yarn.sh
 ```
 
-#Check HDFS status
+# Check HDFS status
 ```
 hdfs dfsadmin -report
 ```
@@ -354,7 +354,7 @@ Xceivers: 1
 Last contact: Tue Apr 12 05:54:12 PDT 2016
 ```
 
-#Check YARN status
+# Check YARN status
 ```
 yarn node -list
 ```
@@ -368,20 +368,20 @@ Total Nodes:1
 ```
 
 
-#ResourceManager
+# ResourceManager
 ```
 http://localhost:8088 
 ```
 
-#NameNode
+# NameNode
 ```
 http://localhost:50070
 ```
 
-#Hadoop File System Commands
+# Hadoop File System Commands
 You can reach file system commands from http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/FileSystemShell.html
 
-#Create a directory in HDFS
+# Create a directory in HDFS
 ```
 Usage:
 hadoop fs -mkdir [-p] <paths>
@@ -394,7 +394,7 @@ hadoop fs -mkdir /user/hadoop
 hadoop fs -mkdir /user/hadoop/dir1 /user/hadoop/dir2 /user/hadoop/dir3
 ```
 
-#List the contents of a directory
+# List the contents of a directory
 ```
 Usage:
 Usage: hadoop fs -ls [-d] [-h] [-R] <args>
@@ -410,7 +410,7 @@ hadoop fs -ls /user/hadoop/dir1
 hadoop fs -ls /user/hadoop/dir1/names.txt
 ```
 
-#Upload a file from local file system to HDFS
+# Upload a file from local file system to HDFS
 ```
 Usage:
 hadoop fs -put <local-src> ... <HDFS_dest_path>
@@ -426,7 +426,7 @@ hadoop fs -put localfile hdfs://nn.example.com/hadoop/hadoopfile
 hadoop fs -put - hdfs://nn.example.com/hadoop/hadoopfile Reads the input from stdin.
 ```
 
-#Download a file from HDFS to local file system
+# Download a file from HDFS to local file system
 ```
 Usage:
 hadoop fs -get [-ignorecrc] [-crc] <src> <localdst>
@@ -435,7 +435,7 @@ Example:
 hadoop fs -get /user/hadoop/dir1/names.txt/home/
 ```
 
-#Copy a file from Local file system to HDFS
+# Copy a file from Local file system to HDFS
 ```
 Usage:
 hadoop fs -copyFromLocal <localsrc> URI
@@ -446,7 +446,7 @@ Example:
 hadoop fs -copyFromLocal /home/hadoop/abc.txt  /user/hadoop/abc.txt
 ```
 
-#Copy a file from HDFS to local file system
+# Copy a file from HDFS to local file system
 ```
 Usage:
 hadoop fs -copyToLocal [-ignorecrc] [-crc] URI <localdst>
@@ -457,7 +457,7 @@ Example:
 hadoop fs -copyToLocal /user/hadoop/purchases.txt /home/training/data
 ```
 
-#Copy a file from source to destination
+# Copy a file from source to destination
 ```
 Usage:
 hadoop fs -cp [-f] [-p | -p[topax]] URI [URI ...] <dest>
@@ -473,7 +473,7 @@ hadoop fs -cp /user/hadoop/dir1/abc.txt /user/hadoop/dir2
 hadoop fs -cp /user/hadoop/file1 /user/hadoop/file2
 ```
 
-#Move file from source to destination
+# Move file from source to destination
 ```
 Usage:
 hadoop fs -mv URI [URI ...] <dest>
@@ -486,7 +486,7 @@ hadoop fs -mv hdfs://nn.example.com/file1 hdfs://nn.example.com/file2 hdfs://nn.
 hadoop fs -mv /user/hduser/dir1/abc.txt /user/hadoop/dir2
 ```
 
-#See contents of a file
+# See contents of a file
 ```
 Usage:
 hadoop fs -cat URI [URI ...]
@@ -499,7 +499,7 @@ hadoop fs -cat hdfs://nn1.example.com/file1 hdfs://nn2.example.com/file2
 hadoop fs -cat file:///file3 /user/hadoop/file4
 ```
 
-#Remove a file or directory in HDFS
+# Remove a file or directory in HDFS
 ```
 Usage:
 Usage: hadoop fs -rm [-f] [-r |-R] [-skipTrash] URI [URI ...]
@@ -517,12 +517,12 @@ hadoop fs -rm hdfs://nn.example.com/file /user/hadoop/emptydir
 hadoop fs -rm /user/hduser/dir1/abc.txt
 ```
 
-#####Recursive version of delete
+##### Recursive version of delete
 ```
 hadoop fs -rmr /user/hadoop/
 ```
 
-#Display the aggregate length of a file
+# Display the aggregate length of a file
 ```
 Usage:
 hadoop fs -du [-s] [-h] URI [URI ...]
@@ -537,12 +537,12 @@ Example:
 hadoop fs -du /user/hadoop/dir1 /user/hadoop/file1 hdfs://nn.example.com/user/hadoop/dir1
 ```
 
-#Copy a directory from one node in the cluster to another
+# Copy a directory from one node in the cluster to another
 ```
 hadoop fs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
 ```
 
-#Merge results from HDFS and copy local file
+# Merge results from HDFS and copy local file
 ```
 hadoop fs -getmerge /user/hduser/helloWorldOutput_WorldCount/ /user/hduser/helloWorldOutput_WorldCount2 ~/tmp/output/test.txt
 ```
@@ -559,7 +559,7 @@ world	2
 hduser@ubuntu:~$ 
 ```
 
-#Simple Example
+# Simple Example
 You can copy job result from HDFS to the local file system. Alternatively, you can use cat command to read the file directly from HDFS without copying it to the local file system.
 ```
 echo kenan enes enejda hasan hüseyin ahmet mehmet kadir cemil vedat ergün güler bekir halit > names1.txt
@@ -608,7 +608,7 @@ vedat	1
 özlem	1
 ```
 
-#Copying multiple file paths into HDFS
+# Copying multiple file paths into HDFS
 ```
 hadoop fs -mkdir fullnames-multiplefiles
 hadoop fs -put names1.txt names2.txt fullnames-multiplefiles
@@ -651,7 +651,7 @@ vedat	1
 özlem	1
 ```
 
-#Copy files from web to HDFS
+# Copy files from web to HDFS
 ```
 mkdir gutenberg
 wget http://www.gutenberg.org/files/4300/4300.txt
